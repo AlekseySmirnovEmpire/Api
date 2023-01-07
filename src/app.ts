@@ -13,7 +13,6 @@ export class App {
         this.app = express();
         this.port = 8000;
         this.logger = logger;
-        ;
     }
 
     useRoutes() {
