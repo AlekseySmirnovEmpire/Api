@@ -1,6 +1,7 @@
 import express, { Express } from 'express';
 import { Server } from 'node:http';
 import { ExceptionFilter } from './errors/exception.filters';
+import { ILogger } from './logger/logger.interface';
 import { LoggerService } from './logger/logger.service';
 import { UserController } from './users/users.controller';
 
@@ -8,11 +9,11 @@ export class App {
     app: Express;
     server: Server;
     port: number;
-    logger: LoggerService;
+    logger: ILogger;
     userController: UserController;
     exeptionFilter: ExceptionFilter;
 
-    constructor(logger: LoggerService, userController: UserController, exeptionFilter: ExceptionFilter) {
+    constructor(logger: ILogger, userController: UserController, exeptionFilter: ExceptionFilter) {
         this.app = express();
         this.port = 8000;
         this.logger = logger;
