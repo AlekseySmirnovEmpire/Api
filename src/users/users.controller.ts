@@ -5,6 +5,7 @@ import { LoggerService } from '../logger/logger.service';
 import { TYPES } from '../types';
 import 'reflect-metadata';
 import { IUserController } from './users.controller.interface';
+import { HTTPError } from '../errors/http-error.class';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -25,7 +26,9 @@ export class UserController extends BaseController implements IUserController {
 	}
 
 	login(req: Request, res: Response, next: NextFunction): void {
-		this.ok(res, 'login');
+		// this.ok(res, 'login');
+		console.log('ds');
+		next(new HTTPError(401, 'Ошибка авторизации', 'login'));
 	}
 
 	register(req: Request, res: Response, next: NextFunction): void {
